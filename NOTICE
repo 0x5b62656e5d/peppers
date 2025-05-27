@@ -7,3 +7,14 @@ This project makes use of external assets under their respective licenses:
 Copyright © 2024 CSS＊GG & GLYF＊APP
 Websites: https://css.gg |  https://glyf.app
 Repository: https://github.com/astrit/css.gg
+
+---
+
+PDF.js (mozilla/pdf.js)
+Licensed under the Apache License, Version 2.0
+Copyright © 2012–2024 Mozilla Foundation and contributors
+https://github.com/mozilla/pdf.js
+
+A copy of the Apache License, Version 2.0 is included in this project at [public/pdfjs/LICENSE](public/pdfjs/LICENSE).
+You may also obtain a copy of the license at:
+http://www.apache.org/licenses/LICENSE-2.0
