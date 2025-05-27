@@ -14,7 +14,7 @@ export const App = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route path="/:filename" element={<FilePreview />} />
+                    <Route path="/preview/:filename" element={<FilePreview />} />
                     <Route path="/nonexistentfile" element={<NonexistentFile />} />
                     <Route path="/error" element={<ErrorPage />} />
                 </Routes>

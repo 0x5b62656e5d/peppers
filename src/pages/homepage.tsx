@@ -15,7 +15,7 @@ export const Homepage: React.FC = () => {
         e.preventDefault();
 
         if (filename) {
-            window.location.href = `/${filename}`;
+            window.location.href = `/preview/${filename}`;
         } else {
             const span = document.querySelector(".filename-error");
             span!.classList.add("error");
