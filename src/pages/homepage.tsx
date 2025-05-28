@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 export const Homepage: React.FC = () => {
+    const navigate = useNavigate();
     const [filename, setFilename] = useState<string>("");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +17,7 @@ export const Homepage: React.FC = () => {
         e.preventDefault();
 
         if (filename) {
-            window.location.href = `/preview/${filename}`;
+            navigate(`/preview/${filename}`);
         } else {
             const span = document.querySelector(".filename-error");
             span!.classList.add("error");
