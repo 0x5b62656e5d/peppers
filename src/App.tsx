@@ -5,7 +5,6 @@ import { FilePreview } from "./pages/filepreview";
 import { NonexistentFile } from "./pages/nonexistentfile";
 import { ErrorPage } from "./pages/errorpage";
 import "./styles/app.css";
-import "./styles/embed.css";
 import "./styles/filepreview.css";
 import "./styles/homepage.css";
 import "./styles/nonexistentfile.css";
