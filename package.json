@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm:dev:vite\" \"npm:dev:pages\"",
+    "dev:vite": "vite",
+    "dev:pages": "npx wrangler pages dev --proxy 5173",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -21,6 +23,7 @@
     "@types/react-dom": "^19.1.2",
     "@types/react-router": "^5.1.20",
     "@vitejs/plugin-react-swc": "^3.9.0",
+    "concurrently": "^9.1.2",
     "dom": "^0.0.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
