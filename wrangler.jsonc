@@ -1,0 +1,6 @@
+{
+    "name": "peppers",
+    "compatibility_date": "2024-05-27",
+
+    "pages_build_output_dir": "./dist"
+}
