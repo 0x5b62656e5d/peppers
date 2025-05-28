@@ -20,7 +20,7 @@ export const FilePreview: React.FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`/${filename}`, {
+                const res = await fetch(`/api/${filename}`, {
                     method: "GET",
                     mode: "cors",
                 });

@@ -19,6 +19,8 @@ export async function onRequest({ request, params }) {
     }
 
     const r2Res = await fetch(`https://peppers-r2.pepper.fyi/${filename}`);
+    console.log(`Serving: ${filename}`);
+    console.log(`Content-Type: ${r2Res.headers.get("Content-Type")}`);
 
     if (!r2Res.ok) {
         return new Response("File not found in R2", {
