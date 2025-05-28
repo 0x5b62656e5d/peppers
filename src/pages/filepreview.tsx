@@ -27,37 +27,38 @@ export const FilePreview: React.FC = () => {
                     mode: "cors",
                 });
 
-                if (res.ok) {
-                    const contentType = res.headers.get("Content-Type");
-
-                    const blob = await res.blob();
-                    const url = URL.createObjectURL(blob);
-                    setDownloadUrl(url);
-
-                    if (contentType?.includes("image/")) {
-                        setPreviewElement(<img className="file" src={url} />);
-                    } else if (contentType?.includes("video/")) {
-                        setPreviewElement(<video className="file" src={url} controls />);
-                    } else if (contentType?.includes("text/")) {
-                        setPreviewElement(<pre className="file">{await blob.text()}</pre>);
-                    } else if (contentType?.includes("audio/")) {
-                        setPreviewElement(<audio className="file" src={url} controls />);
-                    } else if (contentType?.includes("pdf")) {
-                        setPreviewElement(
-                            <iframe
-                                src={`/pdfjs/web/viewer.html?file=${encodeURIComponent(url)}`}
-                                className="file"
-                            />
-                        );
+                if (!res.ok) {
+                    if (res.status === 404) {
+                        navigate("/nonexistentfile");
                     } else {
-                        setPreviewElement(<h3 id="download-file-text">Download {filename}</h3>);
+                        navigate("/error");
                     }
-                } else if (res.status === 404) {
-                    console.error("Failed to fetch file:", res.statusText);
-                    navigate("/nonexistentfile", { state: { filename } });
+                    return;
+                }
+
+                const contentType = res.headers.get("Content-Type");
+
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                setDownloadUrl(url);
+
+                if (contentType?.includes("image/")) {
+                    setPreviewElement(<img className="file" src={url} />);
+                } else if (contentType?.includes("video/")) {
+                    setPreviewElement(<video className="file" src={url} controls />);
+                } else if (contentType?.includes("text/")) {
+                    setPreviewElement(<pre className="file">{await blob.text()}</pre>);
+                } else if (contentType?.includes("audio/")) {
+                    setPreviewElement(<audio className="file" src={url} controls />);
+                } else if (contentType?.includes("pdf")) {
+                    setPreviewElement(
+                        <iframe
+                            src={`/pdfjs/web/viewer.html?file=${encodeURIComponent(url)}`}
+                            className="file"
+                        />
+                    );
                 } else {
-                    console.error("Failed to fetch file:", res.statusText);
-                    navigate("/error");
+                    setPreviewElement(<h3 id="download-file-text">Download {filename}</h3>);
                 }
             } catch (error) {
                 console.error("Error fetching file:", error);
