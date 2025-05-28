@@ -10,7 +10,12 @@ export const NonexistentFile: React.FC = () => {
             <h1 className="womp-womp">Womp womp!</h1>
             <div className="p-nonexistent-msg">
                 <p className="error-msg">
-                    {filename || "The file you are looking for"} does not exist!
+                    {filename ? (
+                        <span id="error-filename">{filename} </span>
+                    ) : (
+                        "The file you are looking for "
+                    )}
+                    does not exist!
                 </p>
                 <p className="error-msg">Please make sure the filename is entered correctly.</p>
             </div>
