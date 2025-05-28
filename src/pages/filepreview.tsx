@@ -52,9 +52,12 @@ export const FilePreview: React.FC = () => {
                     } else {
                         setPreviewElement(<h3 id="download-file-text">Download {filename}</h3>);
                     }
-                } else {
+                } else if (res.status === 404) {
                     console.error("Failed to fetch file:", res.statusText);
                     navigate("/nonexistentfile", { state: { filename } });
+                } else {
+                    console.error("Failed to fetch file:", res.statusText);
+                    navigate("/error");
                 }
             } catch (error) {
                 console.error("Error fetching file:", error);
