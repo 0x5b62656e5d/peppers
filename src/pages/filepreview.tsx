@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
-
 export const FilePreview: React.FC = () => {
     const navigate = useNavigate();
     const { filename } = useParams<{ filename: string }>();
@@ -22,7 +20,7 @@ export const FilePreview: React.FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`${BUCKET_URL}/${filename}`, {
+                const res = await fetch(`/${filename}`, {
                     method: "GET",
                     mode: "cors",
                 });
